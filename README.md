@@ -1,2 +1,2 @@
-# opening-times
+# Opening-times
 Business opening times script
