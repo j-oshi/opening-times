@@ -38,7 +38,7 @@ export default class DisplayPanel {
                 outerDiv.appendChild(timeDiv);
             };
 
-            el.opened.forEach(timeElement);        console.log(div);
+            el.opened.forEach(timeElement);
 
             div.appendChild(outerDiv);
         })
