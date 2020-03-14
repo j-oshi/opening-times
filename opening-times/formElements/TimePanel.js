@@ -3,11 +3,7 @@ import Button from './Button.js';
 import Day from './Day.js';
 import OperatingHoursPanel from './OperatingHoursPanel.js';
 
-export default class DayPanel {
-    constructor() {
-
-    }
-
+export default class TimePanel {
     render() {
         // Add panel
         let Panel = document.createElement('div');
@@ -22,16 +18,19 @@ export default class DayPanel {
         list.setAttribute('class', 'list');
         Panel.appendChild(list);
 
-        let button = new Button({text: 'Add time'});
-        let addToDayPanel = button.render();
+        let addToDayPanel = Button('Add time');
         addToDayPanel.addEventListener('click', function() {
-            if ([...list.childNodes].length < 10) {
+            if ([...list.childNodes].length < 4) {
                 let addHour = new OperatingHoursPanel();
                 let openHour = addHour.render();
                 list.appendChild(openHour);
             }
         });
-        Panel.appendChild(addToDayPanel);
+        
+        let control = document.createElement('div');
+        control.setAttribute('class', 'time-list-control');
+        control.appendChild(addToDayPanel);
+        Panel.appendChild(control);
 
         return Panel;
     }

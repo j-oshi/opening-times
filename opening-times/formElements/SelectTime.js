@@ -20,7 +20,7 @@ export default class SelectTime {
         // Create and append the options
         for (let i = 0; i < array.length; i++) {
             let option = document.createElement("option");
-            option.value = array[i];
+            option.value = this.padNumber(array[i]);
             option.text = this.padNumber(array[i]);
             selectList.appendChild(option);
         }
@@ -28,11 +28,11 @@ export default class SelectTime {
         return button;
     };
 
-    padNumber(c) {
-        if (c > 9) {
-          return c;
+    padNumber(value) {
+        if (value > 9) {
+          return value;
         } else {
-          return `${0}${c}`;
+          return `${0}${value}`;
         }
     };
 
@@ -52,5 +52,5 @@ export default class SelectTime {
         content.appendChild(this.selectButton(minute));
 
         return content;
-    }
+    };
 }
