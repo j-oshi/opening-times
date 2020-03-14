@@ -1,11 +1,6 @@
 import SelectTime from './SelectTime.js';
 
 export default class OperatingHoursPanel {
-    constructor(element) {
-        // this.name = element.name;
-        // this.text = element.text;
-    }
-    
     render() {
         let startPeriod = {period: 'start', time: null};
         let start = new SelectTime(startPeriod);
