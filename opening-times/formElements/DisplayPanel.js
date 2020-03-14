@@ -21,9 +21,8 @@ export default class DisplayPanel {
 
     render() {
         let currentTime = this.rearrangeByDay(this.data);
-
         let div = document.createElement('div');
-        currentTime.map( el => {
+        currentTime.forEach( el => {
             // Day title
             let outerDiv = document.createElement('div');
             outerDiv.setAttribute('class', 'o-time');
@@ -32,18 +31,18 @@ export default class DisplayPanel {
             innerSpan.appendChild(divText);
             outerDiv.appendChild(innerSpan);
 
-            el.opened.map( innerEl => {
+            const timeElement = innerEl => {
                 let timeDiv = document.createElement('span');
                 let timeText = document.createTextNode(`${innerEl.start.hour}:${innerEl.start.minute} - ${innerEl.end.hour}:${innerEl.end.minute}`);
                 timeDiv.appendChild(timeText);
                 outerDiv.appendChild(timeDiv);
-            })
+            };
 
-
+            el.opened.forEach(timeElement);        console.log(div);
 
             div.appendChild(outerDiv);
         })
-        console.log(currentTime);
+  
         return div;
     }
 }

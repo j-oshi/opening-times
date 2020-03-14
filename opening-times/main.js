@@ -49,8 +49,6 @@ export default function addFormToBody(tag) {
                 let load = new GetTimeValue(OpeningTimeTag);
                 let displayOpening = new DisplayPanel(load.result());
                 data = load.result()
-                displayOpening.render();
-
                 let table = displayOpening.render()
                 if (nodeToSide.firstChild) {
                     nodeToSide.removeChild(nodeToSide.firstChild);
