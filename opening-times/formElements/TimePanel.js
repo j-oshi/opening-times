@@ -1,4 +1,3 @@
-// import OperatingHoursPanel from './OperatingHoursPanel';
 import Button from './Button.js';
 import Day from './Day.js';
 import OperatingHoursPanel from './OperatingHoursPanel.js';
