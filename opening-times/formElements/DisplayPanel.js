@@ -4,24 +4,43 @@ export default class DisplayPanel {
     }
 
     rearrangeByDay(array) {
-        const day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];      
+        if (array.length < 1) {
+            return;
+        }
+
+        // Remove duplicate days and fill in missing days
+        let uniqueDays = [...new Set(array.map(date => date.day))].map(day => {return array.find(date => date.day === day)});
+        let fillDays = days.map(day => {
+            let foundDay = uniqueDays.find(date => date.day === day);
+            if (foundDay) {
+                return foundDay;
+            } else {
+                return {day};
+            }
+        });
+
         let d = new Date();
         let n = d.getDay();
-        let currentDay = day[n];
-        let index = array.findIndex( el => el.day === currentDay );
+        let currentDay = days[n];
+
+        let index = fillDays.findIndex( el => el.day === currentDay );
 
         if (index !== -1) {
-            let moveToBack = array.slice(0, index); 
-            let moveToFront = array.slice(index, index + array.length);
+            let moveToBack = fillDays.slice(0, index); 
+            let moveToFront = fillDays.slice(index, index + fillDays.length);
+            console.log(moveToFront.concat(moveToBack));
             return moveToFront.concat(moveToBack);
         } else {
-            return array;
+            return fillDays;
         }
     }
 
     render() {
         let currentTime = this.rearrangeByDay(this.data);
+        console.log(currentTime);
         let div = document.createElement('div');
+
         currentTime.forEach( el => {
             // Day title
             let outerDiv = document.createElement('div');
@@ -38,7 +57,14 @@ export default class DisplayPanel {
                 outerDiv.appendChild(timeDiv);
             };
 
-            el.opened.forEach(timeElement);
+            const closed = () => {
+                let closeDiv = document.createElement('span');
+                let closeText = document.createTextNode('closed');
+                closeDiv.appendChild(closeText);
+                outerDiv.appendChild(closeDiv);
+            }
+
+            let process = el.opened ? el.opened.forEach(timeElement) : closed();
 
             div.appendChild(outerDiv);
         })
