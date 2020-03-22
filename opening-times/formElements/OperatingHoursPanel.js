@@ -1,4 +1,5 @@
 import SelectTime from './SelectTime.js';
+import Button from './Button.js';
 
 export default class OperatingHoursPanel {
     render() {
@@ -16,6 +17,15 @@ export default class OperatingHoursPanel {
         div.appendChild(start.render());
         div.appendChild(span);
         div.appendChild(end.render());
+
+        let removeFromOperatingPanel = Button('remove');
+        removeFromOperatingPanel.className += " remove";
+        removeFromOperatingPanel.addEventListener('click', function() {
+            let el = this.closest('.time-container');
+            el.parentNode.removeChild(el);
+        });
+
+        div.appendChild(removeFromOperatingPanel);
         return div;
     }
 }

@@ -16,7 +16,7 @@ export default class DisplayPanel {
             if (foundDay) {
                 return foundDay;
             } else {
-                return {day};
+                return {day, opened: 'closed'};
             }
         });
 
@@ -29,7 +29,6 @@ export default class DisplayPanel {
         if (index !== -1) {
             let moveToBack = fillDays.slice(0, index); 
             let moveToFront = fillDays.slice(index, index + fillDays.length);
-            console.log(moveToFront.concat(moveToBack));
             return moveToFront.concat(moveToBack);
         } else {
             return fillDays;
@@ -38,7 +37,6 @@ export default class DisplayPanel {
 
     render() {
         let currentTime = this.rearrangeByDay(this.data);
-        console.log(currentTime);
         let div = document.createElement('div');
 
         currentTime.forEach( el => {
@@ -63,8 +61,7 @@ export default class DisplayPanel {
                 closeDiv.appendChild(closeText);
                 outerDiv.appendChild(closeDiv);
             }
-
-            let process = el.opened ? el.opened.forEach(timeElement) : closed();
+            let process = ((typeof el.opened) === 'object') ? el.opened.length > 0 ?  el.opened.forEach(timeElement) : closed() : closed();
 
             div.appendChild(outerDiv);
         })
