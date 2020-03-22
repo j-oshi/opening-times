@@ -25,10 +25,20 @@ export default class TimePanel {
                 list.appendChild(openHour);
             }
         });
+
+        let removeDayPanel = Button('Remove');
+        removeDayPanel.className += " removePanel";
+
+        // Remove operating panel
+        removeDayPanel.addEventListener('click', function() {
+            let el = this.closest('.panel');
+            el.parentNode.removeChild(el);
+        });
         
         let control = document.createElement('div');
         control.setAttribute('class', 'time-list-control');
         control.appendChild(addToDayPanel);
+        control.appendChild(removeDayPanel);
         Panel.appendChild(control);
 
         return Panel;

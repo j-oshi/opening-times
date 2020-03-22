@@ -23,10 +23,10 @@ export default class GetTimeValue {
                 }
                 return periods;
             });  
-
+            let timeOpened = opened.length > 0 ? opened : 'closed';
             let Opening = {
                 day,
-                opened,
+                opened: timeOpened,
             }
             return Opening;
 

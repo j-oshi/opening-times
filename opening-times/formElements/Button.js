@@ -4,3 +4,5 @@ export default function Button(text) {
     button.textContent = text;
     return button;
 }
+
+
