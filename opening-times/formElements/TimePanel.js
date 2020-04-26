@@ -5,15 +5,15 @@ import OperatingHoursPanel from './OperatingHoursPanel.js';
 export default class TimePanel {
     render() {
         // Add panel
-        let Panel = document.createElement('div');
+        let Panel = document.createElement('article');
         Panel.setAttribute('class', 'panel');
 
-        let header = document.createElement('div');
+        let header = document.createElement('header');
         header.setAttribute('class', 'header');
         header.appendChild(Day());
         Panel.appendChild(header);
 
-        let list = document.createElement('div');
+        let list = document.createElement('main');
         list.setAttribute('class', 'list');
         Panel.appendChild(list);
 
@@ -35,7 +35,7 @@ export default class TimePanel {
             el.parentNode.removeChild(el);
         });
         
-        let control = document.createElement('div');
+        let control = document.createElement('footer');
         control.setAttribute('class', 'time-list-control');
         control.appendChild(addToDayPanel);
         control.appendChild(removeDayPanel);
