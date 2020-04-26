@@ -7,19 +7,21 @@
     <link href="css/opening-times.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div id="time-wrapper">
-      <div class="o-display o-control">
-        <h2>Operatiing Time</h2>
-        <div id="o-times"></div>
-      </div>
-      <div class="o-display">
+    <article id="time-wrapper">
+      <article class="o-display o-control">
+        <header>
+          <h2>Operating Time</h2>
+        </header>
+        <main id="time-list-container"></main>
+      </article>
+      <article class="o-display">
         <div id="o-Hours"></div>
-      </div>
-    </div>
+      </article>
+    </article>
     <script type="module" src="/opening-times/main.js"></script>
     <script type="module">
       import addFormToBody from './opening-times/main.js';
-      addFormToBody('o-times');
+      addFormToBody('time-list-container');
     </script>
 </body>
 </html> 
