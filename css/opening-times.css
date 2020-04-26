@@ -57,10 +57,7 @@ header > h2 {
 }
 
 @media only screen and (min-width: 600px) { 
-  #time-wrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .time-list-control {
+  #time-wrapper, .time-list-control {
     grid-template-columns: repeat(2, 1fr);    
   }
 }
